@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { HttpClient,HttpParams } from '@angular/common/http';
+
 
 
 
@@ -7,8 +9,9 @@ export class GifsService {
 
   private _tagsHistory : string[] = [];
   private apiKey :string = 'eODCkVFDjx6hRHiNiZZQXpXrkEeEcgkc';
+  private serviceUrl: string = 'http://api.giphy.com/v1/gifs';
 
-  constructor() { }
+  constructor( private http:HttpClient) { }
 
   get tagHistory(){
     return [...this._tagsHistory]
@@ -27,6 +30,19 @@ export class GifsService {
   searchTag(tag:string):void{
     if(tag.length === 0) return;
     this.organizeHistory(tag);
+    // fetch(`http://api.giphy.com/v1/gifs/search?api_key=${this.apiKey}&q=${tag}&limit=2`)
+    // .then( res => res.json())
+    // .then( data => console.log(data));
+    const params = new HttpParams()
+    .set('api_key', this.apiKey)
+    .set('limit', '4')
+    .set('q', tag)
+
+
+    this.http.get(`${this.serviceUrl}/search`,{params})//se puede enviar headers
+    .subscribe( res => {
+      console.log(res);
+    } );
 
   }
 
