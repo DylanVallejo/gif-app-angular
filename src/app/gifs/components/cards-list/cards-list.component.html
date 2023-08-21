@@ -1,7 +1,14 @@
 <div class="row">
   <div *ngFor="let gif of gifs" class="col-md-3 col-sm-6">
     <div class="card mb-2 bg-dark text-center">
-      <!-- imagen del gif -->
+    
+      <!-- cuando un atributo html es igual a una expresion jas
+      se le indica con square brackets [src] -->
+      <img
+        [src]="gif.images.downsized_medium.url"
+        [alt]=" "gif.title
+        class="card-img-top"
+      >
 
       <div class="card-body text-white">
         <div class="card-text">

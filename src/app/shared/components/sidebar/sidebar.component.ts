@@ -18,6 +18,9 @@ export class SidebarComponent {
     return this.gifsService.tagHistory;
   }
 
+  // hacer click y que llame el servicio con el metodo
+  // este debe buscar con el gif
+
 
 
 }
