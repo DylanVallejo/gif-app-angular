@@ -13,14 +13,10 @@ export class SidebarComponent {
 
   }
 
-  // public list = this.gifsService.tagHistory;
   get tags(){
     return this.gifsService.tagHistory;
   }
-
-  // hacer click y que llame el servicio con el metodo
-  // este debe buscar con el gif
-
-
-
+  searchTag(tag:string):void{
+    return this.gifsService.searchTag(tag);
+  }
 }
